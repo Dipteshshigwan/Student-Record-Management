@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.round {
+    border-radius: 50%;
+}
+</style>
+
+<script src="css/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+	
+	/*
+		[
+																				{sub0: $("#sub0").val(), sub0_m: $("#sub0_m").val()}, 
+																				{sub1: $("#sub1").val(), sub1_m: $("#sub1_m").val()},
+																				{sub2: $("#sub2").val(), sub2_m: $("#sub2_m").val()},
+																				{sub3: $("#sub3").val(), sub3_m: $("#sub3_m").val()},
+																				{sub4: $("#sub4").val(), sub4_m: $("#sub4_m").val()},
+																				{sub5: $("#sub5").val(), sub5_m: $("#sub5_m").val()}]
+	*/
+	
+		$("#add_btn").click(function(){
+			var subs_with_marks = [];
+			subs_with_marks.push({sub0: $("#sub0").val(), sub0_m: $("#sub0_m").val()});
+			alert(subs_with_marks.length);
+			$.post("http://localhost/Pro3/php/main.php", {key: "enter_marks", regno: $("#regno").val(), subs_with_marks: subs_with_marks}, function(data, stat){
+																					alert(data);
+																				});
+		});
+	});
+</script>
+
+</head>
+
+<body background="E:\New folder\images.jpg">
+
+<p align="center"><img src="1478673121Capture.jpg" width="150" height="140"></p>
+
+<h2 align="center">Smart Student Management System</h2>
+<h3 align="center">Marks Details</h3>
+<p align="center">Designed by Diptesh Sahil Deepak</p>
+<br>
+   
+ <p align="center">Please fill in this Regd No. and respectively your's Marks along with Subjects below.</p>
+    <hr>
+<!-- <label for="email"><b>Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="email" required>
+
+ <input type="text" placeholder="Enter Middle Name" name="email" required>
+ 
+    <input type="text" placeholder="Enter Surname" name="email" required> -->
+<br><br> <label for="email"><b>Redg. No.</b></label>
+    <input id="regno" type="text" required placeholder="Enter Redg No." size="10" />
+    <br><br>
+
+<form id="marks_form">
+  Name of a Subject: <input type="text" id="sub0" />
+  Marks (Min=0 and Max=100):
+  <input type="number" id="sub0_m" min="0" max="100" />
+  
+  <br><br>
+  Name of a Subject: <input type="text" id="sub1" />
+  Marks (Min=0 and Max=100):
+  <input type="number" id="sub1_m" min="0" max="100" />
+
+  <br><br>
+  Name of a Subject: <input type="text" id="sub2" />
+  Marks (Min=0 and Max=100):
+  <input type="number" id="sub2_m" min="0" max="100" />
+
+  <br><br>
+  Name of a Subject: <input type="text" id="sub3" />
+  Marks (Min=0 and Max=100):
+  <input type="number" id="sub3_m" min="0" max="100" />
+
+  <br><br>
+  Name of a Subject: <input type="text" id="sub4" />
+  Marks (Min=0 and Max=100):
+  <input type="number" id="sub4_m" min="0" max="100" />
+
+  <br><br>
+  Name of a Subject: <input type="text" id="sub5" />
+  Marks (Min=0 and Max=100):
+  <input type="number" id="sub5_m" min="0" max="100" />
+
+<br><br>
+  <button id="add_btn">Submit</button>
+</form>
+
+<br><br><br><body align="center">
+<!-- <a href="#" class="previous">&laquo; Previous Page</a>-->
+<a href="Welcome.html" class="next">Home</a>
+</body>
+
+</body>
+</html>

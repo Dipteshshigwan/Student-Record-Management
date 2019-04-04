@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 50px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display:inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+</style>
+<script src="css/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#register").click(function(){
+			var regno = $("input[name='regdno']").val();
+			var name = $("input[name='name']").val();
+			var rollno = $("input[name='rollno']").val();
+			var address = $("input[name='address']").val();
+			var dob = $("#myDate").val();
+			var email = $("input[name='email']").val();
+			var branch = $("input[name='branch']").val();
+			var gender = $("input[name='gender']:checked").val().toString();
+			var contact = $("input[name='mobile']").val();
+			var pasw = $("input[name='psw']").val();
+			alert(regno+"\t"+name+"\t"+rollno+"\t"+address+"\t"+dob+"\t"+email+"\t"+branch+"\t"+gender+"\t"+contact+"\t"+pasw);
+			$.post("http://localhost/Pro3/php/main.php", {key: "register",
+												regno: regno, name: name, rollno: rollno, address: address, dob: dob, email: email, branch: branch, gender: gender, contact: contact, pasw: pasw}, function(data, success){
+													alert(data);
+												});
+		});
+	});
+</script>
+</head>
+<body>
+
+<div>
+  <div class="container">
+   
+	  <h1>Register</h1>
+	  <h2>Smart Student Management System</h2>
+	  <p>Designed by Diptesh Sahil Deepak</p>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+ 
+<label for="email"><b>Regd.No.</b></label>
+    <input type="text" placeholder="Enter Registration No." name="regdno" required>
+
+
+<label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="name" required>
+ <label for="email"><b>Roll No.</b></label>
+    <input name="rollno" type="text" required placeholder="Enter Roll No" size="10">
+	  
+  <label for="address"><b>Address</b></label>
+    <input name="address" type="text" required placeholder="Enter Address" size="50">
+  
+  <label for="DOB"><b>Date of Birth</b></label>
+    
+	   <input type="date" id="myDate">
+	  <script>
+function myFunction() {
+    document.getElementById("myDate").value = "2014-02-09";
+}
+</script>
+	  <br><br>
+	  <!--<input type="text" placeholder="Enter DOB" name="email" required>-->
+  <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="branch"><b>Branch</b></label>
+    <input type="text" placeholder="Enter Your Branch" name="branch" required>
+
+    <label for="Gender"><b>Gender</b></label><br>
+    <input type="radio" name="gender" value="Male">Male<br>
+    <input type="radio" name="gender" value="Female">Female<br>
+    <input type="radio" name="gender" value="Other">Other
+    <br><br>
+    <!--<input type="text" placeholder="Enter Your Fees" name="fees" required>-->
+
+    <label for="mobile"><b>Contact No.</b></label>
+    <input type="text" placeholder="Enter Mobile No." name="mobile" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <hr>
+    <p>By creating an account you agree to our Terms & Privacy.</p>
+
+	  <button id="register" class="registerbtn">Register</button>
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <a href="Login.html">Sign in.</a></p>
+  </div>
+</div>
+
+</body>
+</html>

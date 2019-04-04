@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.round {
+    border-radius: 50%;
+}
+</style>
+
+<style>
+table, td {
+    border: 1px solid black;
+}
+</style>
+
+
+<script src="css/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#attn").click(function(){
+			$.post("http://localhost/Pro3/php/main.php", {key: "attendance", regno: $("#regno").val()}, function(data, status){
+				alert(data);
+				$("#attn_label").text(data);
+			});
+		});
+	});
+</script>
+</head>
+
+<body background="E:\New folder\images.jpg">
+<p align="center"><img src="1478673121Capture.jpg" width="150" height="140"></p>
+
+<h2>Smart Student Management System</h2>
+<p>Designed by Diptesh Sahil Deepak</p>
+<br>
+   
+ <p>Please fill in this Regd. No. and respectively your's Attendance will appear.</p>
+    <hr>
+ <label for="redg no."><b>Registration No.:</b></label>
+    <input type="text" placeholder="Enter Redg no." id="regno" name="Redg no." required>
+<p><strong>Attendance: </strong><label id="attn_label"></label></p> 
+    <br>
+	
+	<table align="center">
+  <tr id="myRow">
+    <td>Redg No.</td>
+    <td>Total Attendance</td>
+  </tr>
+  <tr id="myRow">			
+    <td>.</td>					<!-- database output of attendance here-->
+    <td></td>
+  </tr>
+</table><br>
+
+	
+    <br>
+
+<br><br><br><body align="center">
+
+<button id="attn">Get Attendance</button></body>
+<br><br><br>
+<a href="Welcome.html" class="next">Home</a>
+
+</body>
+
+</html>
